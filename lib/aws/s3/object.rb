@@ -181,7 +181,7 @@ module AWS
           source_key      = path!(bucket, key)
           default_options = {'x-amz-copy-source' => source_key}
           target_key      = path!(bucket, copy_key)
-          returning put(target_key, default_options) do
+          put(target_key, default_options).tap do
             acl(copy_key, bucket, acl(key, bucket)) if options[:copy_acl]
           end
         end
@@ -192,7 +192,7 @@ module AWS
           bucket          = bucket_name(bucket)
           source_key      = path!(bucket, key)
           default_options = {'x-amz-copy-source' => source_key, 'x-amz-metadata-directive' => 'REPLACE'}
-          returning put(source_key, options.merge(default_options)) do
+          put(source_key, options.merge(default_options)).tap do
             acl(key, bucket, acl(key, bucket))
           end
         end
