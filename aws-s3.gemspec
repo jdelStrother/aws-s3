@@ -8,4 +8,6 @@ Gem::Specification.new do |s|
 
   s.files = %w(CHANGELOG COPYING INSTALL Rakefile) + Dir['lib/**/*'] + Dir["bin/*"]
   s.require_path = 'lib'
+
+  s.add_runtime_dependency('xml-simple', '~> 1.0.0')
 end
