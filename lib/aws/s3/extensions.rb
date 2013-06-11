@@ -1,3 +1,4 @@
+#encoding: ascii
 #:stopdoc:
 
 class Hash
